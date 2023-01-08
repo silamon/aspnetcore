@@ -11,7 +11,26 @@
     public string Message { get; set; }
 }
 
-<div class="text-center">
-    <h1 class="display-4">Pages Home</h1>
-    <p>This sandbox should give you a quick view of a basic MVC application.</p>
+@if (Model.MyFruit != 0)
+{
+    <h3>You selected the following values: @string.Join(",", Model.MyFruit)</h3>
+}
+
+<!-- https://stackoverflow.com/questions/31415326/using-checkboxes-to-postback-enum-with-flags -->
+<div>
+    <form class="form-horizontal" method="post">
+        <h1>Fruits</h1>
+
+        <div><label>@Fruit.Love.ToString() <input type="checkbox" name="MyFruit" value="@((int) Fruit.Love)" @(Model.MyFruit.HasFlag(Fruit.Love) ? "checked" : String.Empty) /></label></div>
+        <div><label>@Fruit.Joy.ToString() <input type="checkbox" name="MyFruit" value="@((int) Fruit.Joy)" @(Model.MyFruit.HasFlag(Fruit.Joy) ? "checked" : String.Empty) /></label></div>
+        <div><label>@Fruit.Peace.ToString() <input type="checkbox" name="MyFruit" value="@((int) Fruit.Peace)" @(Model.MyFruit.HasFlag(Fruit.Peace) ? "checked" : String.Empty) /></label></div>
+        <div><label>@Fruit.Patience.ToString() <input type="checkbox" name="MyFruit" value="@((int) Fruit.Patience)" @(Model.MyFruit.HasFlag(Fruit.Patience) ? "checked" : String.Empty) /></label></div>
+        <div><label>@Fruit.Kindness.ToString() <input type="checkbox" name="MyFruit" value="@((int) Fruit.Kindness)" @(Model.MyFruit.HasFlag(Fruit.Kindness) ? "checked" : String.Empty) /></label></div>
+        <div><label>@Fruit.Goodness.ToString() <input type="checkbox" name="MyFruit" value="@((int) Fruit.Goodness)" @(Model.MyFruit.HasFlag(Fruit.Goodness) ? "checked" : String.Empty) /></label></div>
+        <div><label>@Fruit.Faithfulness.ToString() <input type="checkbox" name="MyFruit" value="@((int) Fruit.Faithfulness)" @(Model.MyFruit.HasFlag(Fruit.Faithfulness) ? "checked" : String.Empty) /></label></div>
+        <div><label>@Fruit.Gentleness.ToString() <input type="checkbox" name="MyFruit" value="@((int) Fruit.Gentleness)" @(Model.MyFruit.HasFlag(Fruit.Gentleness) ? "checked" : String.Empty) /></label></div>
+        <div><label>@Fruit.SelfControl.ToString() <input type="checkbox" name="MyFruit" value="@((int) Fruit.SelfControl)" @(Model.MyFruit.HasFlag(Fruit.SelfControl) ? "checked" : String.Empty) /></label></div>
+
+        <input type="submit" value="GO" />
+    </form>
 </div>
